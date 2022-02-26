@@ -14,7 +14,7 @@ resource "cloudflare_record" "ghost_blog_record" {
 	proxied = true
  }
 
-resource "cloudflare_record" "ghost_blog_record" {
+resource "cloudflare_record" "wwww_record" {
   zone_id = lookup(data.cloudflare_zones.ghost_domain_zones.zones[0], "id")
   type    = "A"
   name    = var.www_dns
