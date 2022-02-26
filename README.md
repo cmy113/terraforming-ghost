@@ -31,3 +31,6 @@ This work is available under [MIT License](https://github.com/Vortexmind/terrafo
 13. `terraform init`
 14. `terraform plan`
 15. `terraform apply`
+16. ssh into the target server and tail the log, it should take about 10 minutes! Be patient :)
+17. `ssh root@xxxx`
+18. `tail -f /var/log/cloud-init-output.log`
