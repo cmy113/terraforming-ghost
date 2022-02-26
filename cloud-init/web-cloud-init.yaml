@@ -33,7 +33,7 @@ write_files:
           container_name: nginx-container
           volumes:
             - ${PWD}/ghost.conf:/etc/nginx/conf.d/ghost.conf
-            - ${PWD}/commento.conf:/etc/nginx/conf.d/www.conf
+            - ${PWD}/www.conf:/etc/nginx/conf.d/www.conf
             - ${PWD}/commento.conf:/etc/nginx/conf.d/commento.conf
             - ${PWD}/static.conf:/etc/nginx/conf.d/static.conf
             - ${PWD}/origin-pull-ca.pem:/etc/nginx/certs/origin-pull-ca.pem

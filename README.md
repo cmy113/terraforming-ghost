@@ -17,7 +17,7 @@ This work is available under [MIT License](https://github.com/Vortexmind/terrafo
 ### How I use it
 
 1. Create an ubuntu machine as DigitalOcean Droplet
-2. git clone https://github.com/cmy113/terraforming-ghost.git
+2. `git clone https://github.com/cmy113/terraforming-ghost.git`
 3. Get the DigitalOcean token to create volume
 4. `export DO_TOKEN='xxxx'`
 5. `cd terraforming-ghost/scripts`
@@ -34,3 +34,7 @@ This work is available under [MIT License](https://github.com/Vortexmind/terrafo
 16. ssh into the target server and tail the log, it should take about 10 minutes! Be patient :)
 17. `ssh root@xxxx`
 18. `tail -f /var/log/cloud-init-output.log`
+
+### To be added manually 
+1. Gmail login for commento 
+2. Mailgun integration to send me email when people make comment in commento 
