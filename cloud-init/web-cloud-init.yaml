@@ -84,7 +84,7 @@ write_files:
             - db_postgres
       
         db-mysql:
-          image: mysql:8.0
+          image: mysql:5.7
           restart: always
           environment:
             MYSQL_ROOT_PASSWORD: ${mysql_password}
