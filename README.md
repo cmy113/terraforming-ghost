@@ -20,7 +20,7 @@ This work is available under [MIT License](https://github.com/Vortexmind/terrafo
 2. git clone https://github.com/cmy113/terraforming-ghost.git
 3. Get the DigitalOcean token to create volume
 4. `export DO_TOKEN='xxxx'`
-5. `cd terraforming-ghost\scripts`
+5. `cd terraforming-ghost/scripts`
 6. `./manage_volume.sh -o create -r sgp1 -s 10 -n ghostvol`
 7. Install terraform
 8. `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
