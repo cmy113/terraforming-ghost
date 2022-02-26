@@ -13,3 +13,21 @@ This template is fully explained in the tutorial published on my blog
 
 ## License
 This work is available under [MIT License](https://github.com/Vortexmind/terraforming-ghost/blob/main/LICENSE)
+
+### How I use it
+
+1. Create an ubuntu machine as DigitalOcean Droplet
+2. git clone https://github.com/cmy113/terraforming-ghost.git
+3. Get the DigitalOcean token to create volume
+4. `export DO_TOKEN='xxxx'`
+5. `cd terraforming-ghost\scripts`
+6. `./manage_volume.sh -o create -r sgp1 -s 10 -n ghostvol`
+7. Install terraform
+8. `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
+9. `sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
+10. `apt install terraform=0.13.4`
+11. Make sure you are in terraforming-ghost directory now by cd .., pwd -> terraforming-ghost
+12. nano terraform.tfvars, put in the right variable by following Paolo's blog
+13. `terraform init`
+14. `terraform plan`
+15. `terraform apply`
