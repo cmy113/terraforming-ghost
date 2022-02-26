@@ -33,6 +33,7 @@ write_files:
           container_name: nginx-container
           volumes:
             - ${PWD}/ghost.conf:/etc/nginx/conf.d/ghost.conf
+            - ${PWD}/commento.conf:/etc/nginx/conf.d/www.conf
             - ${PWD}/commento.conf:/etc/nginx/conf.d/commento.conf
             - ${PWD}/static.conf:/etc/nginx/conf.d/static.conf
             - ${PWD}/origin-pull-ca.pem:/etc/nginx/certs/origin-pull-ca.pem
@@ -52,7 +53,7 @@ write_files:
           command: ["nginx", "-g", "daemon off;"]
 
         ghost:
-          image: ghost:3-alpine
+          image: ghost:4-alpine
           volumes:
             - /mnt/${digitalocean_volume_name}/www_data:/var/www/html
           restart: always
@@ -83,7 +84,7 @@ write_files:
             - db_postgres
       
         db-mysql:
-          image: mysql:5.7
+          image: mysql:8.0
           restart: always
           environment:
             MYSQL_ROOT_PASSWORD: ${mysql_password}
@@ -111,6 +112,34 @@ write_files:
       
         nginx:
     path: /opt/scripts/docker-compose.yml
+  - content: |
+      server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        server_name ${www_dns};
+
+        gzip off;
+
+        ssl_certificate /etc/letsencrypt/live/${cloudflare_domain}/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/${cloudflare_domain}/privkey.pem;
+
+        ssl_client_certificate /etc/nginx/certs/origin-pull-ca.pem;
+        ssl_verify_client on;
+
+        include /etc/nginx/snippets/ssl-params.conf;
+
+        location / {
+            return 301 https://${ghost_blog_dns}$request_uri;
+        }
+
+        location ~ /.well-known {
+            allow all;
+        }
+
+        client_max_body_size 50m;
+
+      }
+    path: /opt/scripts/www.conf
   - content: |
       server {
         listen 443 ssl http2;

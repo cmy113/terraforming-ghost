@@ -8,6 +8,7 @@ output "digitalocean_ipv4_addr" {
 
     URLs:
         https://${var.ghost_blog_dns}
+        https://${var.www_dns}
         https://${var.commento_dns}
         https://${var.static_dns}
 

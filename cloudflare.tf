@@ -14,6 +14,15 @@ resource "cloudflare_record" "ghost_blog_record" {
 	proxied = true
  }
 
+resource "cloudflare_record" "ghost_blog_record" {
+  zone_id = lookup(data.cloudflare_zones.ghost_domain_zones.zones[0], "id")
+  type    = "A"
+  name    = var.www_dns
+  value   = data.digitalocean_droplet.web.ipv4_address
+  ttl     = "1"
+	proxied = true
+ }
+
  resource "cloudflare_record" "commento_record" {
   zone_id = lookup(data.cloudflare_zones.ghost_domain_zones.zones[0], "id")
   type    = "A"

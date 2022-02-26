@@ -52,9 +52,14 @@ variable "ghost_blog_dns" {
   type = string
 }
 
+variable "www_dns" {
+  type = string
+}
+
 variable "commento_dns" {
   type = string
 }
+
 
 variable "static_dns" {
   type = string

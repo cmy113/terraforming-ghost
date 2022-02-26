@@ -31,6 +31,7 @@ resource "digitalocean_droplet" "web" {
     "postgres_user" = var.postgres_user,
     "postgres_password" = var.postgres_password,
     "ghost_blog_dns" = var.ghost_blog_dns,
+    "www_dns"=var.www_dns,
     "commento_dns" = var.commento_dns,
     "static_dns" = var.static_dns,
     "cloudflare_email" = var.cloudflare_email,

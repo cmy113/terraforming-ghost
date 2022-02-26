@@ -12,7 +12,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-while getopts r:n:o: flag
+while getopts r:n:o:s: flag
 do
     case "${flag}" in
         r) region=${OPTARG};;
@@ -64,7 +64,7 @@ then
     then 
         curl -X POST -H "Content-Type: application/json" \
         -H "Authorization: Bearer ${DO_TOKEN}" \
-        -d "{\"size_gigabytes\":15, \"name\": \"${name}\", \"description\": \"Persistent volume for terraforming-ghost project\", \"region\": \"${region}\", \"filesystem_type\": \"ext4\"}" \
+        -d "{\"size_gigabytes\":${size}, \"name\": \"${name}\", \"description\": \"Persistent volume for terraforming-ghost project\", \"region\": \"${region}\", \"filesystem_type\": \"ext4\"}" \
         "https://api.digitalocean.com/v2/volumes"
     fi
 
